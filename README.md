@@ -20,3 +20,6 @@ Your application is extensible, and third parties can add plug-ins that contain 
 | Plugin Support    | Possible but riskier    | Excellent - clear public contract |
 | Memory Management    | Manual unsubscribe required    | Built-in unsubscribe pattern |
 | Design Guidelines    | Not recommended for cross-class communication   | Standard .NET pattern |
+
+ ## Architecture / Core Components
+![Architecture](RealTimeWinFormsApp/Assets/flow-arch.png).
