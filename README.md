@@ -1,4 +1,5 @@
 # Desktop application with Real-Time Multi-Form Data Synchronization
+> code examples using dotnet and C#
 
 ## The Context
 You are working on a desktop application that consists of multiple forms. 
@@ -104,8 +105,9 @@ public class FormMain : DataViewBase
 - Forms can be visually designed in Visual Studio while maintaining runtime functionality.
 
 ## Running the Example
-- Clone the repository
-- Open the solution in Visual Studio
+- [Download .NET](https://dotnet.microsoft.com/en-us/download)
+- [Download Visual Studioy](https://visualstudio.microsoft.com/pt-br/downloads/)
+- Clone the repository and open the solution in Visual Studio
 - Build and run the application
 - Observe how changes in the main form update all open views
 - Plugins load automatically and respond to data changes
