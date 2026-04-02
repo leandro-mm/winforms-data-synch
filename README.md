@@ -106,7 +106,7 @@ public class FormMain : DataViewBase
 
 ## Running the Example
 - [Download .NET](https://dotnet.microsoft.com/en-us/download)
-- [Download Visual Studioy](https://visualstudio.microsoft.com/pt-br/downloads/)
+- [Download Visual Studio](https://visualstudio.microsoft.com/pt-br/downloads/)
 - Clone the repository and open the solution in Visual Studio
 - Build and run the application
 - Observe how changes in the main form update all open views
