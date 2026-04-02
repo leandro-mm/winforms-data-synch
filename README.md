@@ -21,10 +21,13 @@ Your application is extensible, and third parties can add plug-ins that contain 
 | Memory Management    | Manual unsubscribe required    | Built-in unsubscribe pattern |
 | Design Guidelines    | Not recommended for cross-class communication   | Standard .NET pattern |
 
- ## Architecture / Core Components
+ ## Architecture / Core Components to Implement The Solution
+ We are using an event-based pattern for this plugin-based system achieving loose coupling. 
+- Your forms don't have to know anything about each other.
+- The class that monitors data changes and raises the event doesn't have to know how many forms are listening and how they look.
+- Third-party plug-ins can easily subscribe to the events at runtime to be able to respond to changes without tightly coupling to the existing system.
+  
 ![Architecture](RealTimeWinFormsApp/Assets/flow-arch.png).
-
-This event-based pattern creates a loosely coupled architecture where the data model doesn't need to know about its consumers, and consumers can be added or removed without modifying existing code - a perfect fit for plugin-based systems.
 
  ## Extensibility Through Plugins
 - Third-party developers can extend the application by implementing a simple plugin interface:
@@ -59,8 +62,44 @@ public class MyCustomPlugin : IDataViewPlugin
 ```
 ### Memory Leak Prevention
 - The base form automatically handles event unsubscription in OnFormClosed, preventing common memory leaks.
+
+```csharp 
+public class DataViewBase : Form
+{
+    public SharedDataModel DataModel { get; private set; }
+    
+    protected override void OnFormClosed(FormClosedEventArgs e)
+    {
+        if (DataModel != null)
+        {
+            //unsubscribe to prevent memory leaks
+            DataModel.DataChanged -= OnDataModelChanged;
+        }            
+    
+        base.OnFormClosed(e);        
+    }
+}
+```
 ### Thread-Safe UI Updates
 - All updates use the InvokeRequired/Invoke pattern to safely update UI from any thread.
+
+```csharp 
+public class FormMain : DataViewBase
+{
+    protected override void UpdateDisplay(string data)
+   {
+       if (InvokeRequired)
+       {
+           Invoke(new Action(() => textDataMainForm.Text = data));
+       }
+       else
+       {
+           textDataMainForm.Text = data;
+       }
+   
+   }
+}
+```
 ### Designer Support
 - Forms can be visually designed in Visual Studio while maintaining runtime functionality.
 
@@ -72,6 +111,5 @@ public class MyCustomPlugin : IDataViewPlugin
 - Plugins load automatically and respond to data changes
 
 ## Conclusion
-Events provide the optimal solution for real-time data synchronization across multiple forms in extensible desktop applications. They offer superior encapsulation and safety while maintaining excellent performance and memory management characteristics.
-
-
+Events provide the optimal solution for real-time data synchronization across multiple forms in extensible desktop applications. 
+They offer superior encapsulation and safety while maintaining excellent performance and memory management characteristics.
