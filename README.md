@@ -6,7 +6,7 @@ You are working on a desktop application that consists of multiple forms.
 Those forms show different views of the same data and they should update in real time. 
 Your application is extensible, and third parties can add plug-ins that contain their own views of the data.
 
-## The Problem
+## The Chanlenge
  Should you use delegates or events to provide Real-Time Data Synchronization?
 
  This becomes particularly important when your application is extensible and third-party 
