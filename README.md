@@ -6,6 +6,13 @@ You are working on a desktop application that consists of multiple forms.
 Those forms show different views of the same data and they should update in real time. 
 Your application is extensible, and third parties can add plug-ins that contain their own views of the data.
 
+### 🌐 **pt-br**:
+```markdown
+- Desafio: Necessidade de uma solução de sincronização de dados que pudesse evoluir com as necessidades de fornecedores terceiros.
+- Ação: Desenvolvimento de uma aplicação Windows Forms utilizando design orientado a eventos permitindo que plugins externos se inscrevam dinamicamente nos eventos da aplicação.
+- Resultado: Ferramenta altamente extensível que permite integrar novos clientes sem modificar a base de código principal.
+```
+
 ## The Chalenge
  Should you use delegates or events to provide Real-Time Data Synchronization?
 
